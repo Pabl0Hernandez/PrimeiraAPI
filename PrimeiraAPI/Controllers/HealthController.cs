@@ -11,7 +11,7 @@ namespace PrimeiraAPI.Controllers
         public IActionResult Get()
         {
             // Retorna um status 200 OK.
-            return Ok(new;
+            return Ok(new
             {
                 status = "UP",
                 service = "Primeira API",
