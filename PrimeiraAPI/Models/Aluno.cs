@@ -9,5 +9,8 @@
         public bool CadastroAtivo { get; set; }
         public decimal Mensalidade { get; set; }
         public DateTime? DataCadastro { get; set; }
+
+        // Propriedade de navegação para a relação N:M com Curso
+        public ICollection<Curso>? Cursos { get; set; } = new List<Curso>();
     }
 }
