@@ -37,6 +37,21 @@ namespace PrimeiraAPI.Migrations
                     b.ToTable("AlunoCurso");
                 });
 
+            modelBuilder.Entity("CursoDisciplina", b =>
+                {
+                    b.Property<Guid>("CursosCursoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DisciplinasDisciplinaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CursosCursoId", "DisciplinasDisciplinaId");
+
+                    b.HasIndex("DisciplinasDisciplinaId");
+
+                    b.ToTable("CursoDisciplina");
+                });
+
             modelBuilder.Entity("PrimeiraAPI.Models.Aluno", b =>
                 {
                     b.Property<Guid>("AlunoId")
@@ -112,6 +127,48 @@ namespace PrimeiraAPI.Migrations
                     b.ToTable("Cursos");
                 });
 
+            modelBuilder.Entity("PrimeiraAPI.Models.Disciplina", b =>
+                {
+                    b.Property<Guid>("DisciplinaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CargaHoraria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Semestre")
+                        .HasColumnType("int");
+
+                    b.HasKey("DisciplinaId");
+
+                    b.ToTable("Disciplinas");
+                });
+
+            modelBuilder.Entity("PrimeiraAPI.Models.DisciplinaCurso", b =>
+                {
+                    b.Property<Guid>("DisciplinaCursoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CursoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DisciplinaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("DisciplinaCursoId");
+
+                    b.HasIndex("CursoId");
+
+                    b.HasIndex("DisciplinaId");
+
+                    b.ToTable("DisciplinasCursos");
+                });
+
             modelBuilder.Entity("AlunoCurso", b =>
                 {
                     b.HasOne("PrimeiraAPI.Models.Aluno", null)
@@ -123,6 +180,21 @@ namespace PrimeiraAPI.Migrations
                     b.HasOne("PrimeiraAPI.Models.Curso", null)
                         .WithMany()
                         .HasForeignKey("CursosCursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CursoDisciplina", b =>
+                {
+                    b.HasOne("PrimeiraAPI.Models.Curso", null)
+                        .WithMany()
+                        .HasForeignKey("CursosCursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PrimeiraAPI.Models.Disciplina", null)
+                        .WithMany()
+                        .HasForeignKey("DisciplinasDisciplinaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -144,6 +216,25 @@ namespace PrimeiraAPI.Migrations
                     b.Navigation("Aluno");
 
                     b.Navigation("Curso");
+                });
+
+            modelBuilder.Entity("PrimeiraAPI.Models.DisciplinaCurso", b =>
+                {
+                    b.HasOne("PrimeiraAPI.Models.Curso", "Curso")
+                        .WithMany()
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PrimeiraAPI.Models.Disciplina", "Disciplina")
+                        .WithMany()
+                        .HasForeignKey("DisciplinaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Curso");
+
+                    b.Navigation("Disciplina");
                 });
 #pragma warning restore 612, 618
         }
