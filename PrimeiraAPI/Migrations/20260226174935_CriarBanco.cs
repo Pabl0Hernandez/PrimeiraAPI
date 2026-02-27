@@ -19,7 +19,7 @@ namespace PrimeiraAPI.Migrations
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DataNascimento = table.Column<DateOnly>(type: "date", nullable: false),
                     RM = table.Column<int>(type: "int", nullable: false),
-                    CadastroAtivo = table.Column<bool>(type: "bit", nullable: false),
+                    CadastroAtivo = table.Column<bool>(type: "bit", nullable: true),
                     Mensalidade = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

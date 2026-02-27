@@ -13,6 +13,6 @@ namespace PrimeiraAPI.Models
         public decimal Mensalidade { get; set; }
 
         // Propriedade de navegação para a relação N:M com Aluno
-        public ICollection<Aluno>? Alunos { get; set; } = new List<Aluno>();
+        public ICollection<Aluno> Alunos { get; set; } = new List<Aluno>();
     }
 }

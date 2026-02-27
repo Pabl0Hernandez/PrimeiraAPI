@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PrimeiraAPI.Controllers
 {
-    [Route("api/statusAPI")]
-    [ApiController] // Ativa validação automática e outras funcionalidades de API.
+    [Route("api/statusAPI")] // Rota base: /api/health
+    [ApiController] // Ativa validação automática e outras funcionalidades de API
+
     public class HealthController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
         {
-            // Retorna um status 200 OK.
             return Ok(new
             {
                 status = "UP",

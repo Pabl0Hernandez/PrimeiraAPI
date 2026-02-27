@@ -12,7 +12,7 @@ using PrimeiraAPI.Data;
 namespace PrimeiraAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260226175532_CriarBanco")]
+    [Migration("20260226174935_CriarBanco")]
     partial class CriarBanco
     {
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace PrimeiraAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("CadastroAtivo")
+                    b.Property<bool?>("CadastroAtivo")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("DataCadastro")

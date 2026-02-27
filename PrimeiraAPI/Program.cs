@@ -5,16 +5,16 @@ using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add os serviÁos b·sicos para a aplicaÁ„o, como controladores e OpenAPI
+// Add os servi√ßos b√°sicos para a aplica√ß√£o, como controladores e OpenAPI
 builder.Services.AddControllers();
 
-// Add OpenAPI (Necess·rio para gerar a documentaÁ„o da API)
+// Add OpenAPI (Necess√°rio para gerar a documenta√ß√£o da API)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
 /*  
  * Add Entity Framework Core e configurar o contexto do banco de dados para usar SQL Server.
- * A string de conex„o È obtida do arquivo appsettings.json.
+ * A string de conex√£o √© obtida do arquivo appsettings.json.
  */
 // Entity Framework + LocalDB
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -23,10 +23,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-// builder.Build() => … onde a aplicaÁ„o È construÌda.
+// builder.Build() => √â onde a aplica√ß√£o √© constru√≠da.
 var app = builder.Build();
 
-// Pipeline de processamento de requisiÁıes HTTP/HTTPS
+// Pipeline de processamento de requisi√ß√µes HTTP/HTTPS
 if (app.Environment.IsDevelopment())
 {
     // Endpoint OpenAPI
@@ -45,14 +45,14 @@ if (app.Environment.IsDevelopment())
 
 }
 
-// Redireciona todas as requisiÁıes HTTP para HTTPS
+// Redireciona todas as requisi√ß√µes HTTP para HTTPS
 app.UseHttpsRedirection();
 
-// Middleware de autorizaÁ„o (pode ser configurado  para proteger endpoints especÌficos)
+// Middleware de autoriza√ß√£o (pode ser configurado  para proteger endpoints espec√≠ficos)
 app.UseAuthorization();
 
 // Mapeia os controladores para os endpoints da API
 app.MapControllers();
 
-// Inicia a aplicaÁ„o e comeÁa a escutar as requisiÁıes
+// Inicia a aplica√ß√£o e come√ßa a escutar as requisi√ß√µes
 app.Run();

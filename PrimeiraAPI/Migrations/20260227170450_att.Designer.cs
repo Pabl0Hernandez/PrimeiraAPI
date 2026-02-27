@@ -12,8 +12,8 @@ using PrimeiraAPI.Data;
 namespace PrimeiraAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260227122207_TabelsCurso")]
-    partial class TabelsCurso
+    [Migration("20260227170450_att")]
+    partial class att
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace PrimeiraAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("CadastroAtivo")
+                    b.Property<bool?>("CadastroAtivo")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("DataCadastro")

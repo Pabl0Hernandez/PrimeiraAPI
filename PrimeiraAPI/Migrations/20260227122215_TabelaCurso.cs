@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PrimeiraAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class TabelsCurso : Migration
+    public partial class TabelaCurso : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
